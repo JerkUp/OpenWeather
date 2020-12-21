@@ -18,19 +18,25 @@ class LocationManager: NSObject, ObservableObject {
     override init() {
         super.init()
         
+        restorePlaces()
+        
         locationManager.delegate = self
         locationAuthorised = locationManager.authorizationStatus == .authorizedWhenInUse
         
         if !locationAuthorised {
             locationManager.requestWhenInUseAuthorization()
+        } else {
+            locationManager.startUpdatingLocation()
         }
-        
-        locationManager.startUpdatingLocation()
     }
     
-    private func addPlace(place: Place) {
-        places.append(place)
+    private func addPlace(place: Place, replaceCurrent: Bool = false) {
+        if replaceCurrent, let firstIndex = places.firstIndex(where: { $0.currentLocation }) {
+            places.remove(at: firstIndex)
+        }
         
+        places.append(place)
+        savePlaces()
         updatePlacesWeather()
     }
     
@@ -41,16 +47,16 @@ class LocationManager: NSObject, ObservableObject {
             let lat = location.coordinate.latitude
             let lon = location.coordinate.longitude
             let name = placemark.locality ?? placemark.name ?? String(format: "%.3f:%.3f", lat, lon)
-            let place = Place(name: name, lat: lat, lon: lon)
+            let place = Place(name: name, lat: lat, lon: lon, currentLocation: true)
             
-            if !self.places.contains(where: { $0.name == place.name }) {
-                self.addPlace(place: place)
-            }
+            self.addPlace(place: place, replaceCurrent: true)
+            
+            self.locationManager.stopUpdatingLocation()
         }
     }
     
     private func updatePlacesWeather() {
-        // TODO: - Update Location
+        // TODO: - Update Weather for locations
         locationsReady = true
     }
 }
@@ -66,10 +72,10 @@ extension LocationManager: CLLocationManagerDelegate {
         locationAuthorised = locationManager.authorizationStatus == .authorizedWhenInUse
         
         if locationAuthorised {
-            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
         } else if places.count == 0 {
-            let defaultPlace = Place(name: "Riga", lat: 56.949, lon: 24.106)
-            addPlace(place: defaultPlace)
+            let defaultPlace = Place(name: "Riga", lat: 56.949, lon: 24.106, currentLocation: true)
+            addPlace(place: defaultPlace, replaceCurrent: true)
         }
     }
     
@@ -80,5 +86,27 @@ extension LocationManager: CLLocationManagerDelegate {
         }
         
         locationManager.stopMonitoringSignificantLocationChanges()
+    }
+}
+
+// Save / restore saved locations
+extension LocationManager {
+    private func restorePlaces() {
+        if let savedPlacesData = UserDefaults.standard.object(forKey: "places") as? Data {
+            let decoder = JSONDecoder()
+            
+            if let savedPlaces = try? decoder.decode([Place].self, from: savedPlacesData) {
+                places = savedPlaces
+            }
+        }
+    }
+    
+    private func savePlaces() {
+        let encoder = JSONEncoder()
+        
+        if let encoded = try? encoder.encode(places) {
+            UserDefaults.standard.set(encoded, forKey: "places")
+        }
+        
     }
 }

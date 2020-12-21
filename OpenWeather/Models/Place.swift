@@ -7,14 +7,16 @@
 
 import Foundation
 
-class Place: Codable {
+struct Place: Codable {
     let name: String
     let lat: Double
     let lon: Double
+    let currentLocation: Bool
     
-    init(name: String, lat: Double, lon: Double) {
+    init(name: String, lat: Double, lon: Double, currentLocation: Bool = false) {
         self.name = name
         self.lat = lat
         self.lon = lon
+        self.currentLocation = currentLocation
     }
 }

@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C60FC3A925912F5700CC9202 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60FC3A825912F5700CC9202 /* Router.swift */; };
+		C60FC3AC2591418800CC9202 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60FC3AB2591418800CC9202 /* RequestManager.swift */; };
+		C60FC3AF2591461B00CC9202 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60FC3AE2591461B00CC9202 /* Weather.swift */; };
+		C60FC3B2259147AF00CC9202 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60FC3B1259147AF00CC9202 /* Main.swift */; };
+		C60FC3B52591483E00CC9202 /* Wind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60FC3B42591483E00CC9202 /* Wind.swift */; };
+		C60FC3B82591488E00CC9202 /* Clouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60FC3B72591488E00CC9202 /* Clouds.swift */; };
+		C60FC3BB2591493700CC9202 /* WeatherDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60FC3BA2591493700CC9202 /* WeatherDetails.swift */; };
+		C60FC3BF25914B4C00CC9202 /* PlaceWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60FC3BE25914B4C00CC9202 /* PlaceWeather.swift */; };
+		C60FC3C225914C9100CC9202 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60FC3C125914C9100CC9202 /* Forecast.swift */; };
+		C60FC3C525914CB000CC9202 /* ForecastDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60FC3C425914CB000CC9202 /* ForecastDetails.swift */; };
+		C60FC3C825914E8900CC9202 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60FC3C725914E8900CC9202 /* Temperature.swift */; };
 		C6D6D64F258EA4EE00B4EB77 /* OpenWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D6D64E258EA4EE00B4EB77 /* OpenWeatherApp.swift */; };
 		C6D6D651258EA4EE00B4EB77 /* PlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D6D650258EA4EE00B4EB77 /* PlaceView.swift */; };
 		C6D6D653258EA4EF00B4EB77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6D6D652258EA4EF00B4EB77 /* Assets.xcassets */; };
@@ -17,6 +28,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C60FC3A825912F5700CC9202 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		C60FC3AB2591418800CC9202 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		C60FC3AE2591461B00CC9202 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		C60FC3B1259147AF00CC9202 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		C60FC3B42591483E00CC9202 /* Wind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wind.swift; sourceTree = "<group>"; };
+		C60FC3B72591488E00CC9202 /* Clouds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clouds.swift; sourceTree = "<group>"; };
+		C60FC3BA2591493700CC9202 /* WeatherDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetails.swift; sourceTree = "<group>"; };
+		C60FC3BE25914B4C00CC9202 /* PlaceWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceWeather.swift; sourceTree = "<group>"; };
+		C60FC3C125914C9100CC9202 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
+		C60FC3C425914CB000CC9202 /* ForecastDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDetails.swift; sourceTree = "<group>"; };
+		C60FC3C725914E8900CC9202 /* Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
 		C6D6D64B258EA4EE00B4EB77 /* OpenWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6D6D64E258EA4EE00B4EB77 /* OpenWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherApp.swift; sourceTree = "<group>"; };
 		C6D6D650258EA4EE00B4EB77 /* PlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceView.swift; sourceTree = "<group>"; };
@@ -39,6 +61,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C60FC3A725912F0500CC9202 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C60FC3A825912F5700CC9202 /* Router.swift */,
+				C60FC3AB2591418800CC9202 /* RequestManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		C6D6D642258EA4EE00B4EB77 = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +91,7 @@
 			children = (
 				C6D6D692258FEED700B4EB77 /* Models */,
 				C6D6D660258F46CC00B4EB77 /* Managers */,
+				C60FC3A725912F0500CC9202 /* Network */,
 				C6D6D654258EA4EF00B4EB77 /* Preview Content */,
 				C6D6D665258F473800B4EB77 /* Views */,
 				C6D6D64E258EA4EE00B4EB77 /* OpenWeatherApp.swift */,
@@ -97,7 +129,16 @@
 		C6D6D692258FEED700B4EB77 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C60FC3B72591488E00CC9202 /* Clouds.swift */,
+				C60FC3B1259147AF00CC9202 /* Main.swift */,
 				C6D6D693258FEF0500B4EB77 /* Place.swift */,
+				C60FC3BE25914B4C00CC9202 /* PlaceWeather.swift */,
+				C60FC3AE2591461B00CC9202 /* Weather.swift */,
+				C60FC3C125914C9100CC9202 /* Forecast.swift */,
+				C60FC3C425914CB000CC9202 /* ForecastDetails.swift */,
+				C60FC3BA2591493700CC9202 /* WeatherDetails.swift */,
+				C60FC3B42591483E00CC9202 /* Wind.swift */,
+				C60FC3C725914E8900CC9202 /* Temperature.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -171,10 +212,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C60FC3B2259147AF00CC9202 /* Main.swift in Sources */,
+				C60FC3B52591483E00CC9202 /* Wind.swift in Sources */,
+				C60FC3C225914C9100CC9202 /* Forecast.swift in Sources */,
+				C60FC3BB2591493700CC9202 /* WeatherDetails.swift in Sources */,
+				C60FC3AF2591461B00CC9202 /* Weather.swift in Sources */,
+				C60FC3BF25914B4C00CC9202 /* PlaceWeather.swift in Sources */,
+				C60FC3B82591488E00CC9202 /* Clouds.swift in Sources */,
 				C6D6D68E258FADE700B4EB77 /* ActivityIndicator.swift in Sources */,
 				C6D6D694258FEF0500B4EB77 /* Place.swift in Sources */,
 				C6D6D651258EA4EE00B4EB77 /* PlaceView.swift in Sources */,
 				C6D6D64F258EA4EE00B4EB77 /* OpenWeatherApp.swift in Sources */,
+				C60FC3AC2591418800CC9202 /* RequestManager.swift in Sources */,
+				C60FC3C525914CB000CC9202 /* ForecastDetails.swift in Sources */,
+				C60FC3A925912F5700CC9202 /* Router.swift in Sources */,
+				C60FC3C825914E8900CC9202 /* Temperature.swift in Sources */,
 				C6D6D662258F472500B4EB77 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
