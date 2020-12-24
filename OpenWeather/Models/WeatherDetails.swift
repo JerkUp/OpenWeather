@@ -15,4 +15,8 @@ struct WeatherDetails: Codable {
     let clouds: Clouds
     let id: Int
     let name: String
+    
+    var temperature: Temperature {
+        return Temperature(value: main.temp)
+    }
 }

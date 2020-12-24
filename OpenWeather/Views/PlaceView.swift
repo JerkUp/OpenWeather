@@ -11,15 +11,19 @@ struct PlaceView: View {
     @ObservedObject var locationManager: LocationManager
     
     var body: some View {
-        if locationManager.locationsReady {
+        if locationManager.locationsReady, let weather = locationManager.selectedWeather {
             VStack(spacing: -10) {
-                Text("Hello, world!")
+                Text(weather.name)
+                    .font(.title)
                     .padding()
-                Text("Hello, world!")
+                Text("\(weather.temperature.celsiusValue)°C")
+                    .font(.title2)
                     .padding()
-                Text("Hello, world!")
+                Text("Humidity: \(weather.main.humidity)%")
                     .padding()
-                Text("Hello, world!")
+                Text("Wind speed: \(String(format: "%.1f", weather.wind.speed))meter/sec")
+                    .padding()
+                Text("Cloudiness: \(weather.clouds.all)%")
                     .padding()
             }
         } else {

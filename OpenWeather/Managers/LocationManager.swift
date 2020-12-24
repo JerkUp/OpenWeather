@@ -14,6 +14,12 @@ class LocationManager: NSObject, ObservableObject {
     private var locationAuthorised: Bool = false
     private let locationManager = CLLocationManager()
     var places: [Place] = []
+    private var placeWeather: [String: WeatherDetails] = [:]
+    
+    var selectedWeather: WeatherDetails? {
+        // TODO: - get selected place weather
+        return placeWeather.first?.value
+    }
     
     override init() {
         super.init()
@@ -56,8 +62,30 @@ class LocationManager: NSObject, ObservableObject {
     }
     
     private func updatePlacesWeather() {
-        // TODO: - Update Weather for locations
-        locationsReady = true
+        var parsedWeather: [String: WeatherDetails] = [:]
+        
+        places.forEach { (place) in
+            guard let request = Router.weather(place: place).toURLRequest() else { return }
+            
+            RequestManager.request(request) { [weak self] (weather: WeatherDetails?, error) in
+                guard let self = self else { return }
+                
+                if let error = error {
+                    print("[LocationManager] error getting weather for place \(place.name): \(error)")
+                    self.locationsReady = true
+                    return
+                }
+                
+                if let plWeather = weather {
+                    parsedWeather[place.name] = plWeather
+                }
+                
+                if parsedWeather.count == self.places.count {
+                    self.placeWeather = parsedWeather
+                    self.locationsReady = true
+                }
+            }
+        }
     }
 }
 

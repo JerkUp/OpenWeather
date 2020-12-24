@@ -9,7 +9,6 @@ import Foundation
 
 public class RequestManager {
     static public func request<T: Codable>(_ urlRequest: URLRequest,
-                               requiresAuthorization: Bool,
                                completionHandler: @escaping (T?, String?) -> Void) -> Void {
         let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             DispatchQueue.main.async {

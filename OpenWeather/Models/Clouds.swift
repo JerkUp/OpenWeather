@@ -8,5 +8,5 @@
 import Foundation
 
 struct Clouds: Codable {
-    let clouds: Int
+    let all: Int
 }

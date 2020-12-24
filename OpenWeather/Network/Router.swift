@@ -8,11 +8,12 @@
 import Foundation
 
 fileprivate struct ApiConfig {
-    public static let ApiUrlString = "api.openweathermap.org/data/2.5/"
+    public static let ApiUrlString = "https://api.openweathermap.org/data/2.5/"
     public static let ApiKey = "0f057df2b7e0620c1a4ec432b1968f01"
 }
 
 enum Units: String {
+    case apiDefault
     case imperial
     case metric
 }
@@ -43,16 +44,19 @@ enum Router {
         return urlPath
     }
     
-    func toURLRequest(units: Units) -> URLRequest? {
+    func toURLRequest(units: Units = .apiDefault) -> URLRequest? {
         guard let url = url() else {
             print("[Router] Wrong base URL")
             return nil
         }
         
         var params: [String: String] = [
-            "appid" : ApiConfig.ApiKey,
-            "units" : units.rawValue
+            "appid" : ApiConfig.ApiKey
         ]
+        
+        if units != .apiDefault {
+            params["units"] = units.rawValue
+        }
         
         switch self {
         case .weather(let place),
